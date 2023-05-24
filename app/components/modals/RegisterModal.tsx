@@ -4,6 +4,7 @@ import {AiFillGithub} from 'react-icons/ai'
 import {FcGoogle} from 'react-icons/fc'
 import { useCallback, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm} from 'react-hook-form'
+import {signIn} from 'next-auth/react'
 import {toast} from 'react-hot-toast'
 // local import
 import useRegisterModal from '@/app/hooks/useRegisterModal'
@@ -51,8 +52,8 @@ const RegisterModal = () => {
     const footerContent = (
         <div className='flex flex-col gap-4 mt-3'>
             <hr />
-            <Button outline label='Continue with Google' icon={FcGoogle} onClick={() => {}} />
-            <Button outline label='Continue with Github' icon={AiFillGithub} onClick={() => {}} />
+            <Button outline label='Continue with Google' icon={FcGoogle} onClick={() => signIn('google')} />
+            <Button outline label='Continue with Github' icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='flex flex-row items-center justify-center gap-2'>
                     <div>
@@ -72,7 +73,7 @@ const RegisterModal = () => {
             isOpen={registerModal.isOpen} 
             title='Register' 
             actionLabel='Continue' 
-            onClose={registerModal.onClose} 
+            onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)} 
             body={bodyContent}
             footer={footerContent}
