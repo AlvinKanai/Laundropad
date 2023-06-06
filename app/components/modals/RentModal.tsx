@@ -5,10 +5,10 @@ import useRentModal from "@/app/hooks/useRentModal"
 import Modal from "./Modal"
 import Heading from "../Heading"
 import CountrySelect from "../inputs/CountrySelect"
-
 import { categories } from "../navbar/Categories"
 import CategoryInput from "../inputs/CategoryInput"
 import { useForm, FieldValues } from "react-hook-form"
+import dynamic from "next/dynamic"
 
 enum STEPS {
     CATEGORY = 0,
@@ -39,6 +39,10 @@ const RentModal = () => {
 
     const category = watch('category')
     const location = watch('location')
+
+    const Map = useMemo(() => dynamic(() => import('../Map'), {
+        ssr: false
+    }), [location])
 
     // makes sure the page is re-rendered since setValue does not
     const setCustomValue = (id: string, value: any) => {
@@ -93,7 +97,7 @@ const RentModal = () => {
             <div className="flex flex-col gap-8">
                 <Heading title="Where is your place located?" subtitle="Help guests find you" />
                 <CountrySelect value={location} onChange={(value) => setCustomValue('location', value)} />
-
+                <Map center={location ?. latlng } />
             </div>
         )
     }
@@ -106,7 +110,8 @@ const RentModal = () => {
             actionLabel={actionLabel} 
             secondaryActionLabel={secondaryActionLabel} 
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack } 
-            title="Laundro your machine" body={bodyContent} 
+            title="Laundro your machine" 
+            body={bodyContent} 
         />
     )
 }
