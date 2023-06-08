@@ -4,7 +4,6 @@ import { useMemo, useState } from "react"
 import useRentModal from "@/app/hooks/useRentModal"
 import Modal from "./Modal"
 import Heading from "../Heading"
-import Input from "../inputs/Input"
 import ImageUpload from "../inputs/ImageUpload"
 import CountrySelect from "../inputs/CountrySelect"
 import { categories } from "../navbar/Categories"
@@ -137,7 +136,6 @@ const RentModal = () => {
             <div className="flex flex-col gap-8">
                 <Heading title="How would you best describe your place" subtitle="Short and sweet works best"/>
                 <Input id="title" label="Title" disabled={isLoading} register={register} errors={errors} required />
-                <Input id="description" label="Description" disabled={isLoading} register={register} errors={errors} required />
             </div>
 
         )
