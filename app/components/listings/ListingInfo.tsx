@@ -34,7 +34,7 @@ const ListingInfo: React.FC <ListingInfoProps> = ({
         <div className="flex flex-col gap-2">
             <div className="text-xl font-semibold flex flex-row items-center gap-2">
                 <div>
-                    Hostedby {user?.name}
+                    Hosted by {user?.name}
                 </div>
                 <Avatar src={user?.image} /> 
             </div>

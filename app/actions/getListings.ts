@@ -79,7 +79,7 @@ export default async function getListings(params: IListingsParams){
         }))
 
         return safeListings
-    }catch(error: any){
+    } catch(error: any) {
         throw new Error(error)
     }
 }
