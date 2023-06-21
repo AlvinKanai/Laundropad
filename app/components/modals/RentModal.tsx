@@ -55,7 +55,7 @@ const RentModal = () => {
 
     const Map = useMemo(() => dynamic(() => import('../Map'), {
         ssr: false
-    }), [location])
+    }), [])
 
     // makes sure the page is re-rendered since setValue does not
     const setCustomValue = (id: string, value: any) => {
