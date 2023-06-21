@@ -15,7 +15,7 @@ const useFavorite = ({listingId, currentUser}: IUseFavorite) => {
     const loginModal = useLoginModal()
 
     const isFavourite = useMemo(() => {
-        const list = currentUser?. favoriteIds || []
+        const list = currentUser?.favoriteIds || []
 
         return list.includes(listingId)
     }, [currentUser, listingId])
@@ -31,9 +31,9 @@ const useFavorite = ({listingId, currentUser}: IUseFavorite) => {
             let request
 
             if(isFavourite){
-                request = () => axios.delete('/api/favourites/${listingId}')
+                request = () => axios.delete(`/api/favourites/${listingId}`)
             } else {
-                request = () => axios.post('/api/favourites/${listingId}')
+                request = () => axios.post(`/api/favourites/${listingId}`)
             }
 
             await request()

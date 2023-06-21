@@ -24,3 +24,5 @@ const ListingPage = async () => {
     )
     
 }
+
+export default ListingPage
